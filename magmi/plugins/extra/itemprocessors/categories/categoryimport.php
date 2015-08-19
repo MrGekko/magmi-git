@@ -48,7 +48,7 @@ class CategoryImporter extends Magmi_ItemProcessor
         $ea = $this->tablename("eav_attribute");
         $result = $this->selectAll(
             "SELECT cs.store_id,csg.website_id,cce.entity_type_id,cce.path,ccev.value as name
-								FROM $cs as cs 
+								FROM $cs as cs
 								JOIN $csg as csg on csg.group_id=cs.group_id
 								JOIN $t as cce ON cce.entity_id=csg.root_category_id
 								JOIN $ea as ea ON ea.attribute_code='name' AND ea.entity_type_id=cce.entity_type_id
@@ -107,7 +107,7 @@ class CategoryImporter extends Magmi_ItemProcessor
         $sql = "SELECT cet.entity_id FROM $cet as cet
 			  JOIN $cetv as cetv ON cetv.entity_id=cet.entity_id AND cetv.attribute_id=? AND cetv.value=?
 			  WHERE cet.parent_id=? ";
-        $catid = $this->selectone($sql, 
+        $catid = $this->selectone($sql,
             array($this->_cattrinfos["varchar"]["name"]["attribute_id"],$cattr["name"],$parentid), "entity_id");
         return $catid;
     }
@@ -153,7 +153,7 @@ class CategoryImporter extends Magmi_ItemProcessor
             $inserts = array();
             $data = array();
             $tb = $this->tablename("catalog_category_entity_$tp");
-            
+
             foreach ($attinfo as $attrcode => $attdata)
             {
                 if (isset($attdata["attribute_id"]))
@@ -185,6 +185,7 @@ class CategoryImporter extends Magmi_ItemProcessor
         {
 
             $parts = explode("||", $cdef);
+
             $cp = count($parts);
             $cname = trim($parts[0]);
             $odefs[] = $cname;
