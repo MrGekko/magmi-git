@@ -1,5 +1,6 @@
 <script type="text/javascript">
-<?php if($withCsvOptions) { ?>
+<?php if ($withCsvOptions) {
+    ?>
 handle_auth=function()
 	{
 		if($('<?php echo $prefix ?>:remoteauth').checked)
@@ -17,7 +18,7 @@ handle_auth=function()
 			new Ajax.Updater('<?php echo $prefix ?>:csvds_filelist','ajax_pluginconf.php',{
 			parameters:{file:'csvds_filelist.php',
 						plugintype:'datasources',
-					    pluginclass:'<?php echo get_class($plugin)?>',
+                        pluginclass:'<?php echo get_class($plugin)?>',
 					    profile:'<?php echo $self->getConfig()->getProfile()?>',
 					    '<?php echo $prefix ?>:basedir':$F('<?php echo $prefix ?>:basedir')}});
 			});
@@ -56,7 +57,8 @@ handle_auth=function()
 			});
 	$('<?php echo $prefix ?>:remoteauth').observe('click',handle_auth);
 	$('<?php echo $prefix ?>:remoteurl').observe('blur',handle_auth);
-<?php } ?>
+<?php 
+} ?>
 
 	$('<?php echo $prefix ?>:prune_cb').observe('click',function() {
 		if($('<?php echo $prefix ?>:prune_cb').checked)
@@ -73,7 +75,8 @@ handle_auth=function()
     		}
     	});
 	}
-<?php if($prefix == '5B5ASI') { ?>
+<?php if ($prefix == '5B5ASI') {
+    ?>
 	showHideAttributeGroups = function() {
 		if($('<?php echo $prefix ?>:create_cb').checked || $('<?php echo $prefix ?>:update_cb').checked) {
 			$('<?php echo $prefix ?>:attribute_groups').show();
@@ -83,5 +86,6 @@ handle_auth=function()
 	};
 	$('<?php echo $prefix ?>:create_cb').observe('click',showHideAttributeGroups);
 	$('<?php echo $prefix ?>:update_cb').observe('click',showHideAttributeGroups);
-<?php } ?>
+<?php 
+} ?>
 </script>

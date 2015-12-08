@@ -1,4 +1,5 @@
 	<?php
+    require_once("security.php");
 ini_set('gpc_magic_quotes', 0);
     require_once("security.php");
 $profile = isset($_REQUEST["profile"]) ? strip_tags($_REQUEST["profile"]) : 'default';
@@ -6,10 +7,9 @@ $_SESSION["last_runned_profile"] = $profile;
 session_write_close();
 ?>
 <script type="text/javascript">
-	var imp_params={engine:'magmi_productimportengine:Magmi_ProductImportEngine',token:'<?php echo $_SESSION["token"]?>'};
+	var imp_params={engine:'magmi_productimportengine:Magmi_ProductImportEngine'};
 	<?php
-foreach ($_REQUEST as $k => $v)
-{
+foreach ($_REQUEST as $k => $v) {
     echo "imp_params['$k']='$v';\n";
 }
 ?>
@@ -19,7 +19,7 @@ foreach ($_REQUEST as $k => $v)
 	<div class="section_title grid_12">
 		<span>Importing using profile (<?php echo $profile?>)...</span> <span><input
 			id="cancel_button" type="button" value="cancel"
-			onclick="cancelImport()"></input></span>
+			onclick="cancelImport()"></span>
 		<div id="progress_container">
 			&nbsp;
 			<div id="import_progress"></div>
