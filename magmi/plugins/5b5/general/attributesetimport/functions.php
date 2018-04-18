@@ -89,7 +89,7 @@ function options($self, $title, $prefix, $entityName, $withCsvOptions, $withMagm
     }
     if ($withEnable) {
         checkbox($self, $prefix, 'enable', true, "Enable ${entityName} import");
-        startDiv($self, $prefix, 'enabled', $self->getParam($prefix.":enable", "off")=="on");
+        startDiv($self, $prefix, 'enabled', $self->getParam($prefix.":enable", "on")=="on");
     }
     if ($withCsvOptions) {
         csvOptions($self, $prefix);
@@ -108,6 +108,7 @@ function options($self, $title, $prefix, $entityName, $withCsvOptions, $withMagm
     if ($prefix == '5B5ATI' || $prefix == '5B5AAI') {
         checkbox($self, $prefix, 'prune_keep_system_attributes', true, "Dont touch non-user attributes when pruning.");
     }
+    text($self,$prefix,'prune_only','',"prune only ${entityName}s matching regexp");
     text($self, $prefix, 'prune_keep', $pruneKeepDefaultValue, "additionally, keep following ${entityName}s when pruning, even if not given in $sourceText (comma-separated)");
     endDiv($self);
     if ($withMagmiDelete) {
